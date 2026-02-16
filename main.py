@@ -28,7 +28,7 @@ try:
     vdfPath = path
     path = path + '/userdata/'
 except FileNotFoundError:
-    print('что у тебя со стимом?')
+    print('Steam Error')
 
 vdfFile = vdf.load(open(vdfPath + '/config/' + 'loginusers.vdf', 'r', encoding='utf-8'))
 for i in Id.values():
@@ -161,3 +161,4 @@ ttk.Button(text='Update', command=Update).place(relx=0.45, rely=0.45, anchor="c"
 
 
 tk.mainloop()
+
