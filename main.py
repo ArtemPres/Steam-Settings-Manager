@@ -12,7 +12,7 @@ def exit():
 
 tk = Tk()
 Id = {}
-tk.protocol("WM_DELETE_WINDOW", exit)#разобраться в файлах, и сделать нормальную загрузку файлов
+tk.protocol("WM_DELETE_WINDOW", exit)
 tk.geometry("1000x600+450+250")
 AccInFolder = {}
 IDV2= {}
@@ -20,7 +20,7 @@ try:
     with open('pyconfig.json', 'r',encoding='utf-8') as f:
         Id = json.load(f)
 except:
-    print('файла нет')
+    print('No file')
 try:
     key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Valve\Steam")
     path, _ = winreg.QueryValueEx(key, "SteamPath")
@@ -43,14 +43,14 @@ for i in (vdfFile['users'].keys() - IDV2):
 
 if not os.path.isdir('files'):  
     os.mkdir('files')
-    print('создал папку')
+    print('Folder Created')
     
 def Save(Id):
     try:
         with open('pyconfig.json', 'w', encoding='utf-8') as f:
             json.dump(Id, f,ensure_ascii=False,)
     except:
-        print('Save ошибка')
+        print('Save Error')
 
 
 def New():
@@ -67,12 +67,12 @@ def New():
                 print(Id)
             except Exception:
                 print(traceback.format_exc()) 
-                print('ошибка 3')
+                print('Error 3')
         except Exception:
             print(traceback.format_exc()) 
-            print('ошибка №2 NEW копирования')
+            print('Error №2 NEW, Coping')
     except:
-        print('ошибка NEW 1')
+        print('Error NEW 1')
     
 def Del():
     delAcc = del_list.get()
@@ -157,6 +157,7 @@ ttk.Button(text='Set', command=lambda: [Set(),ComboUpdate()]).place(relx=0.56, r
 ttk.Button(text='Clear', command=Clear).place(relx=0.25, rely=0.45, anchor="c", relwidth=0.1, relheight=0.07)
 ttk.Button(text='Print', command=pr).place(relx=0.35, rely=0.45, anchor="c", relwidth=0.1, relheight=0.07)
 ttk.Button(text='Update', command=Update).place(relx=0.45, rely=0.45, anchor="c", relwidth=0.1, relheight=0.07)
+
 
 
 tk.mainloop()
